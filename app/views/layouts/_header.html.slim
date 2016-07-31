@@ -1,0 +1,16 @@
+nav.navbar.navbar-default.navbar-static-top
+  .container
+    .navbar-header= link_to 'Facebook Photos', root_path, class: 'navbar-brand'
+    #navbar.navbar-collapse.collapse
+      - if current_user
+        ul.nav.navbar-nav.navbar-left
+          li
+            = link_to 'My albums', albums_path
+        ul.nav.navbar-nav.navbar-right
+          p.navbar-text Signed in as #{current_user.name}
+          li
+            = link_to 'Sign out', sign_out_path
+      - else
+        ul.nav.navbar-nav.navbar-right
+          li
+            = link_to 'Sign in', 'auth/facebook'

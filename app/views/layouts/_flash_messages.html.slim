@@ -1,0 +1,5 @@
+- flash.each do |name, msg|
+  div class = "alert alert-#{name == 'alert' ? 'danger' : 'success'}" alert-dismissable = true role = 'alert'
+    button.close type = 'button' data-dismiss = 'alert'
+      span aria_hidden = 'true' &times;
+    = msg

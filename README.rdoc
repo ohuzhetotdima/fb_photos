@@ -1,0 +1,23 @@
+= \Facebook Photos
+
+This is a simple Rails application that allows you to sign in via facebook, downloads your albums and photos and displays them.
+
+
+== Getting started
+
+Quite standard things:
+
+* bundle install
+* setup database
+* run Thin
+* run Sidekiq
+
+== Things to improve
+
+* Write specs
+* I18n if needed
+* Make synchronization real (not just destroy all and then download all)
+* Find out how to access album cover photo without extra authenticate call
+* Implement polling or websockets to make interface more user friendly
+* Check 'dependent:destroy' behaviour (memory issues) if we have tons of photos ('ON DELETE CASCADE' maybe)
+* Use full versions of photos, not only thumbs as I do now

@@ -1,0 +1,13 @@
+# Should be moved to .gitignore
+
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  username: postgres
+  password: postgres
+  host: localhost
+
+development:
+  <<: *defaults
+  database: facebook_photos_dev

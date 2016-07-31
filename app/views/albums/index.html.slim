@@ -1,0 +1,19 @@
+h1.page-header.text-center My albums
+
+- @albums.each do |album|
+  .row
+    .col-sm-3
+      = link_to album_path(album) do
+        = image_tag album.cover_photo.url(:thumb)
+    .col-sm-9
+      h4= link_to album.name, album_path(album)
+      p= album.description
+      small= album.created_time
+
+.text-center= will_paginate @albums
+
+- if @albums.empty?
+  .text-center
+    b
+      | No albums yet. Try to
+      =< link_to 'synchronize with facebook', facebook_syncs_path, method: :post

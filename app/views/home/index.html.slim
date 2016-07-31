@@ -1,0 +1,23 @@
+.text-center
+  h1.page-header Facebook photos
+
+  - if current_user
+    - if @facebook_sync.present?
+      - if @facebook_sync.completed?
+        b Synchronization completed on #{@facebook_sync.finished_at}
+        p
+          => link_to 'View results', albums_path, class: 'btn btn-primary'
+          = link_to 'New synchronization', facebook_syncs_path, class: 'btn btn-success', method: :post
+      - elsif @facebook_sync.failed?
+        b Synchronization failed on #{@facebook_sync.finished_at}
+        p= link_to 'Try again', facebook_syncs_path, class: 'btn btn-success', method: :post
+      - else
+        b Synchronization started on #{@facebook_sync.created_at}
+        p It may take some time. Try to refresh page
+    - else
+      p Press button below to get your albums and photos from facebook
+      = link_to 'Get photos', facebook_syncs_path, class: 'btn btn-success', method: :post
+  - else
+    | Please
+    =<> link_to 'Sign in with facebook', 'auth/facebook'
+    | to start using application

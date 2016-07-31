@@ -1,0 +1,13 @@
+h1.page-header= @album.name
+
+- @photos.each_slice(4) do |slice|
+  .row
+    - slice.each do |photo|
+      .col-sm-3
+        = image_tag photo.image.url(:thumb)
+        p=> photo.name
+        small= photo.created_time
+
+br
+.text-center= will_paginate @photos
+
